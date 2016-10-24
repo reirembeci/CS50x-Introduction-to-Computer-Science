@@ -1,0 +1,22 @@
+0. Pneumonoultramicroscopicsilicovolcanoconiosis is an artificial long word said to mean a lung disease caused by inhaling very fine ash and sand dust.
+   In our dictionary header is an example of the maximum length for a word (45 characters).
+
+1. getrusage -> get resource usage.
+
+2. There are 16 members in a variable of type struct rusage.
+
+3. Because getrusage() (in our case) returns resource usage statistics for the calling process (before and after we call the function). The before/after argument is a pointer to an object of type struct rusage in which the returned information is stored.
+
+4. Main loads the dictionary and opens the text file. Than goes character per character until it has reached the end of file, ignoring alphabetical strings too long to be words and words with numbers, allowng only alphabetical characters + apostrophes and appending character to words. When reaching a not alphabetical character (ex. space) than the program must have found a whole word so it terminates the word by adding '\0'. Finally, the words passes to check() to see if it is mispelled or not.  
+
+5. Because fgetc() reads the next character from stream and returns it as an unsigned char cast to an int, or EOF or error. On the ther side, fscanf() reads input from the stream pointer stream. If we rely only on fscanf() we might have words containing not only alphabetical characters and apostrophes but also other signs.
+
+6. Constant means that it does not change after initialisation. When we say const char *s we are telling the compiler that we will not be making any changes to the data that s points to. 
+
+7. To implement the spell-checker, I used a trie. I defined the trie with "typedef struct node..." that contained a boolean (is_word) and the node* (children[27]). Then to load the dictionary, I read through the dictionary charachter per character until it reached the EOF. Iterating thorugh the trie for every dictionary word and allocating memory for new nodes whenever necessary or moving to new nodes.
+
+8. The first time I got it correctly my code might have been a littel faster than it is now.  The problem was that I had errors in valgrind.
+
+9. The first time my code worked everything looked fine. No memory leeks, check50 passed and it was also fast. The only problem I had was a lot of errors in valgrind, most of them were "Conditional jump or move depends on uninitialised value(s)". However after hours of trying I fixed the problem by changing malloc to calloc.
+
+10.I don't think so. I wish my total time was faster, but I am happy with my work. 

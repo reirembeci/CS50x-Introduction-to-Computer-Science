@@ -1,0 +1,56 @@
+0.  BMP : In a bitmap image file on a disk or a bitmap image in memory, the pixels can be defined by a varying number of bits. The 1-bit per pixel (1bpp) format supports 2 distinct colors; 2bpp supports 4 colors;4bpp -> 16 colors ; 8bpp -> 32 colors; 16bpp -> 2^16colors; 24bpp -> 2^24 colors and 32bpp -> 2^32 colors !
+    GIF : Supports 8 bits per pixel, so 2^8 = 256 distinct colors
+    PNG : Suport 32 bits per pixel (24 for colors and 8 for alpha), so 2^24 distinct colors.
+    JPEG : JPEG images typically store 24 bits per pixel, so 2^24 distinct colors.
+    
+1.  Graphics Interchange Format (GIF)
+
+2.  With lossless compression, a file that has been compressed can be decoded back into its original form with no loss of information. Because every single bit of data that was originally in the file remains after the file is uncompressed. 
+    On the other hand, lossy compression reduces a file by permanently eliminating certain information, especially redundant information. Lossy compression is commonly used for media files.
+
+3.  JPEG
+
+4.  FAT stands for File Allocation Table. When a file is deleted on a FAT file system, two things happen :
+    a) The system modifies the filename's first character in the file's directory entry to signal that the file has been deleted and that the directorty entry can be recycled.
+    b) The sysyem moves all of the fole's FAT clusters to the hard drive's list of free clusters (the operating system deletes the pointers to the file and in the FAT the space occupied by the file is mark as available). The actual file data is never touched.
+
+5.  a) Overwrite the files so that they can not be recovered. 
+    b) Physical destruction of the drive.
+    
+6.  stdint.h is a header file in the C standard library. It provides sets of integer types having specified widths, together with the defined minimum and maximum allowable values for each type, using macros.
+    The "width" of an integer type is the number of bits used to store its value in a pure binary system. Corresponding macros specify limits of the declared types and construct suitable constants.
+    
+7.  To use those predefined type for specific number usage.
+    The typedef name int N _t designates a signed integer type with width N, no padding bits, and a two's-complement representation. Thus, int8_t denotes a signed integer type with a width of exactly 8 bits.
+    The typedef name uint N _t designates an unsigned integer type with width N. Thus, uint16_t denotes an unsigned integer type with a width of exactly 16 bits.
+    
+8.  BYTE ->  (uint8_t)   8 bits = 1 byte
+    DWORD -> (uint32_t) 32 bits = 4 bytes
+    LONG ->  (int32_t)  32 bits = 4 bytes
+    WORD ->  (uint16_t) 16 bits = 2 bytes
+
+9.  The first two bytes of a BMP is a WORD type -> bfType, which specifies the file type. To indicate bitmap, it must be set to the signature word BM (0x4D42).
+
+10. bfSize -> the size in bytes of the bitmap file.
+    biSize -> the number of bytes required by the structure.
+
+
+11. If biHeight is negative, the bitmap is a top-down DIB and its origin is the upper-left corner.
+
+12. The BMP’s color depth in BITMAPINFOHEADER is specified by biBitCount.
+
+13. fopen might return NULL because of an error. For expample : no permission to create file, not enough disk space etc.
+
+14. The third argument to fread is the number of elements to read. 
+    fread(&data, size, number, inptr);
+    The function fread() reads number number of objects (where each object is size bytes) and places them into the array pointed to by buffer.
+    In our code we read the only BITMAPINFOHEADER inside a bmp. Hence, the fread should only read 1 set of sizeof(BITMAPFILEHEADER).
+    
+15. 1
+
+16. fseek(inptr, padding, SEEK_CUR)
+    The fseek() function sets the file position indicator for the inptr pointed to by inptr. The new position is obtained by adding padding bytes to the position specified by SEEK_CUR.
+    
+17. SEEK_CUR moves the pointer x number of bytes down from the current pointer position.
+
+18. Milo Banana dun it.
